@@ -4,6 +4,8 @@ const app = express()
 const PORT = process.env.PORT 
 const sequelize = require('./database/database')
 
+app.use(express.json())
+
 const dbConnection = async () => {
     try {
        await sequelize.authenticate() 
