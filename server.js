@@ -3,8 +3,10 @@ const express = require('express')
 const app = express()
 const PORT = process.env.PORT 
 const sequelize = require('./database/database')
+const categoryRouter = require('./routers/categoryRouter')
 
 app.use(express.json())
+app.use(categoryRouter)
 
 const dbConnection = async () => {
     try {
