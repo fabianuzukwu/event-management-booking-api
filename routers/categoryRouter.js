@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const { createCategory, getAllCategory, getOneCategory, updateCategory, deleteCategory } = require('../controllers/categoryController')
-const { createCategoryValidator, updateCategoryValidator} = require('../validation/categoryValidator')
+const { createCategoryValidator, updateCategoryValidator} = require('../middlewares/categoryValidator')
 
 router.post('/categories', createCategoryValidator, createCategory)
 router.get('/categories', getAllCategory)
