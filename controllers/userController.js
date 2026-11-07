@@ -48,11 +48,11 @@ const getAllUsers = async (req, res) => {
 const getOneUser = async (req, res) => {
     try {
         const { id } = req.params
-        const user = await User.findbyPk(id, {
+        const user = await User.findByPk(id, {
             attributes: ['firstName', 'lastName', 'email', 'phoneNumber'],
             include: {
                 model: Booking,
-                as: 'bookings',
+                as: 'Bookings',
                 attributes: ['quantity', 'totalAmount', 'status']
 
             }
@@ -79,7 +79,7 @@ const updateUser = async (req, res) => {
     try {
         const { id } = req.params
         const { firstName, lastName, email, phoneNumber, password} = req.body
-        const user = await User.findbyPk(id)
+        const user = await User.findByPk(id)
 
         if (!user) {
             return res.status(404).json({
