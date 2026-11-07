@@ -1,8 +1,8 @@
-const { Event } = require('../models');
+// const { Event } = require('../models');
 
 
-const createEvent = async (req, res) => {
-   try {
-    
-   }
-} 
+// const createEvent = async (req, res) => {
+//    try {
+//      const {}
+//    }
+// } 
