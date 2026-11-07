@@ -50,7 +50,7 @@ const getOneCategory = async ( req, res ) => {
             include: {
                 model: Event,
                 as: 'events',
-                attributes: [ 'title', 'description', 'location', 'date', 'price' ]
+                attributes: [ 'title', 'description', 'location', 'date', 'ticketPrice' ]
             }
         } );
 

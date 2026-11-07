@@ -11,18 +11,18 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-        // Event.belongsTo(models.Category,{ 
-        //   foreignKey: 'categoryId',
-        //   as: 'category',
-        //   onDelete: 'CASCADE',
-        //   onUpdate: 'CASCADE'
-        // })
+        Event.belongsTo(models.Category,{ 
+          foreignKey: 'categoryId',
+          as: 'category',
+          onDelete: 'CASCADE',
+          onUpdate: 'CASCADE'
+        })
  
-        // Event.hasMany(models.Booking, {
-        //   as: 'bookings',
-        //   onDelete: 'CASCADE',
-        //   onUpdate: 'CASCADE'
-        // })
+        Event.hasMany(models.Booking, {
+          as: 'bookings',
+          onDelete: 'CASCADE',
+          onUpdate: 'CASCADE'
+        })
     }
   }
   Event.init({
