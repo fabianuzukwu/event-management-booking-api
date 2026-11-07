@@ -10,7 +10,7 @@ const bookingRouter = require('./routers/bookingRouter')
 
 app.use(express.json())
 app.use(categoryRouter)
-// app.use(userRouter)
+//app.use(userRouter)
 // app.use(eventRouter)
 // app.use(bookingRouter)
 

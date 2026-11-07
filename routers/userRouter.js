@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 
 const {createUser, getAllUsers, getOneUser, updateUser, deleteUser} = require('../controllers/userController.js')
-const { createUserValidator, updateUserValidator} = require('..validation/userValidator.js')
+const { createUserValidator, updateUserValidator} = require('../middlewares/userValidator.js')
 
 router.post('/users',createUserValidator, createUser)
 router.get('/allUsers', getAllUsers)
