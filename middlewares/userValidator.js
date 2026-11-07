@@ -27,11 +27,11 @@ const createUserValidator = (req, res, next) => {
         "string.empty": "Email cannot be empty",
         "string.email": "Email must be a valid email address",
       }),
-      phoneNumber: Joi.string().trim().pattern("^\+?[1-9]\d{1,14}$").required().messages({
-            "any.required": "Phone number is required",
-            "string.empty": "Phone number must be a digit and a minimum of 14"
-        }),
-      password: Joi.string().pattern(new RegExp('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$')).required().messages({
+    phoneNumber: Joi.string().trim().pattern("^\+?[1-9]\d{1,14}$").required().messages({
+          "any.required": "Phone number is required",
+          "string.empty": "Phone number must be a digit and a minimum of 14"
+      }),
+      password: Joi.string().pattern(new RegExp("^\d{0,12}$")).required().messages({
             "any.required": "Password is required",
             "string.pattern.base": "Password must contain at least lowercase, uppercase, digit and special character and must be minimum of 8 characters",
     })
