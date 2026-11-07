@@ -4,7 +4,7 @@ const createUserValidator = (req, res, next) => {
     const userSchema = Joi.object ({
         firstName: Joi.string()
         .trim()
-        .pattern(new RegExp("^[A-Za-z]{3,}$"))
+        .regex(/^[A-Za-z]{3,}$/)
         .required()
         .messages({
           "any.required": "First name is required",
@@ -14,7 +14,7 @@ const createUserValidator = (req, res, next) => {
         }),
         lastName: Joi.string()
         .trim()
-        .pattern(new RegExp("^[A-Za-z]{3,}$"))
+        .regex(/^[A-Za-z]{3,}$/)
         .required()
         .messages({
           "any.required": "Last name is required",
@@ -27,12 +27,14 @@ const createUserValidator = (req, res, next) => {
         "string.empty": "Email cannot be empty",
         "string.email": "Email must be a valid email address",
       }),
-      phoneNumber: Joi.string().trim().pattern("^\+?[1-9]\d{1,14}$").required().messages({
+      phoneNumber: Joi.string().trim().regex(/^\d{10,}$/).required().messages({
             "any.required": "Phone number is required",
-            "string.empty": "Phone number must be a digit and a minimum of 14"
+            "string.empty": "Phone number must not be empty",
+            "string.pattern.base": "Phone number must be digits and must be at least 10 digits long"
         }),
-      password: Joi.string().pattern(new RegExp('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$')).required().messages({
+      password: Joi.string().regex(/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/).required().messages({
             "any.required": "Password is required",
+            "string.empty": "Password must not be empty",
             "string.pattern.base": "Password must contain at least lowercase, uppercase, digit and special character and must be minimum of 8 characters",
     })
     })
@@ -51,7 +53,7 @@ const updateUserValidator = (req, res, next) => {
      const userSchema = Joi.object ({
         firstName: Joi.string()
         .trim()
-        .pattern(new RegExp("^[A-Za-z]{3,}$"))
+        .regex(/^[A-Za-z]{3,}$/)
         .optional()
         .messages({
           "string.empty": "First name cannot be empty",
@@ -60,7 +62,7 @@ const updateUserValidator = (req, res, next) => {
      }),
      lastName: Joi.string()
         .trim()
-        .pattern(new RegExp("^[A-Za-z]{3,}$"))
+        .regex(/^[A-Za-z]{3,}$/)
         .optional()
         .messages({
           "string.empty": "Last name cannot be empty",
@@ -71,10 +73,12 @@ const updateUserValidator = (req, res, next) => {
         "string.empty": "Email cannot be empty",
         "string.email": "Email must be a valid email address",
       }),
-       phoneNumber: Joi.string().trim().pattern("^\+?[1-9]\d{1,14}$").optional().messages({
-            "string.empty": "Phone number must be a digit and a minimum of 14"
+       phoneNumber: Joi.string().trim().regex(/^\d{10,}$/).optional().messages({
+            "any.required": "Phone number is required",
+            "string.empty": "Phone number must not be empty",
+            "string.pattern.base": "Phone number must be digits and must be at least 10 digits long"
         }),
-         password: Joi.string().pattern(new RegExp('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$')).optional().messages({
+         password: Joi.string().regex(/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/).optional().messages({
             "string.pattern.base": "Password must contain at least lowercase, uppercase, digit and special character and must be minimum of 8 characters",
     })
 })
