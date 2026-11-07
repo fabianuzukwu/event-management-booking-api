@@ -57,7 +57,18 @@ module.exports = (sequelize, DataTypes) => {
       },
       categoryId: {
         allowNull: false,
-        type: DataTypes.UUID
+        type: DataTypes.UUID,
+        references: {
+        model: 'Categories',
+        key: 'id'  
+        },
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE'
+      },
+      availableTickets: {
+        allowNull: false,
+        type: DataTypes.INTEGER,
+        defaultValue: 0
       },
       createdAt: {
         allowNull: false,
@@ -70,8 +81,8 @@ module.exports = (sequelize, DataTypes) => {
     }, { 
     sequelize,
     modelName: 'Event',
-    tableName: 'Events',
-    timestamps: 'true'
+    tableName: 'events',
+    timestamps: true
  });
   return Event;
 };
