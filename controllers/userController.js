@@ -53,7 +53,7 @@ const getOneUser = async (req, res) => {
             include: {
                 model: Booking,
                 as: 'bookings',
-                attributes: ['id', 'userId', 'eventId', 'numberOfTickets']
+                attributes: ['quantity', 'totalAmount', 'status']
 
             }
         })
