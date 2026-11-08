@@ -20,7 +20,7 @@ module.exports = {
         type: Sequelize.ENUM('Pending', 'Confirmed', 'Cancelled')
       },
       userId : {
-        type: DataTypes.UUID,
+        type: Sequelize.UUID,
         allowNull: false,
         references: {
           model: 'Users',
@@ -30,10 +30,10 @@ module.exports = {
         onUpdate: 'CASCADE'
       },
       eventId : {
-        type: DataTypes.UUID,
+        type: Sequelize.UUID,
         allowNull: false,
         references: {
-          model: 'Events',
+          model: 'events',
           key: 'id'
         },
         onDelete: 'CASCADE',
