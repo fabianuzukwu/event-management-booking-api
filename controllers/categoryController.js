@@ -83,7 +83,7 @@ const updateCategory = async ( req, res ) => {
             } );
         }
 
-        if ( name ) {
+        if ( name && name !== category.name) {
             const categoryName = await Category.findOne( { where: { name } } );
             if ( categoryName ) {
                 return res.status( 400 ).json( {
