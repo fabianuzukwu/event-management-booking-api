@@ -1,5 +1,4 @@
-const { Booking, User, Event } =require('../models');
-const event = require('../models/event');
+const { Booking, Event } =require('../models');
 
 const createBooking = async (req, res) => {
     try {
@@ -57,8 +56,8 @@ const getOneBooking = async (req, res) => {
         const Booking = await Booking.findByPk(id,{
             attributes: ['id', 'quantity', 'totalAmount', 'status', 'userId', 'eventId'],
             include: {
-                model: events,
-                as: 'event',
+                model: Event,
+                as: 'events',
                 attributes: ['title',
                     'description',
                     'date',
