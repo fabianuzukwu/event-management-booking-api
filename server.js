@@ -6,13 +6,13 @@ const sequelize = require('./database/database')
 const categoryRouter = require('./routers/categoryRouter')
 const userRouter = require('./routers/userRouter')
 // const eventRouter = require('./routers/eventRouter')
-// const bookingRouter = require('./routers/bookingRouter')
+const bookingRouter = require('./routers/bookingRouter')
 
 app.use(express.json())
 app.use(categoryRouter)
 app.use(userRouter)
 // app.use(eventRouter)
-// app.use(bookingRouter)
+app.use(bookingRouter)
 
 const dbConnection = async () => {
     try {
